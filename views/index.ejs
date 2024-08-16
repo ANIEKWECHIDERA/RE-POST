@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RE-post</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Create post</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero-sctn">
+        <h1>This is RE-post</h1>
+        <p>Post Once, Share Everywhere</p>
+      </section>
+
+      <section class="posts">
+        <form action="/post" method="POST" enctype="multipart/form-data">
+          <label for="message">Write Post</label>
+          <textarea
+            name="message"
+            id="message"
+            rows="10"
+            cols="50"
+            placeholder="What do you want to talk about?"
+          ></textarea>
+          <br />
+          <br />
+
+          <label for="media">Add Media</label>
+          <input type="file" id="media" name="media" multiple>
+          <br />
+          <br />
+
+          <button type="submit">Post Content</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
