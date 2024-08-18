@@ -86,6 +86,7 @@ app.post('/post', upload.array('media', 5), async (req, res) => {
       console.log('LinkedIn access token is missing.');
     }
 
+    //Upload meadia to Google drive and generate a public URL
     let mediaUrls = [];
 
     if (mediaFiles && mediaFiles.length > 0) {
