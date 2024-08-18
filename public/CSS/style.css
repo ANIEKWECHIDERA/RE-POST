@@ -1,9 +1,14 @@
 /* Global Styles */
-body {
-  font-family: 'Roboto', sans-serif;
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+
   background-color: #f4f4f4;
   color: #333;
 }
@@ -22,7 +27,7 @@ a {
 /* Header Section */
 .header {
   background: linear-gradient(to right, #0044cc, #0088ff);
-  padding: 15px 0;
+  padding: 30px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -64,7 +69,7 @@ a {
   background-position: center;
   color: #fff;
   text-align: center;
-  padding: 100px 20px;
+  padding: 150px 20px;
   position: relative;
 }
 
@@ -100,6 +105,7 @@ a {
   border-radius: 5px;
   transition: background 0.3s ease;
   margin-right: 15px;
+  display: inline-block;
 }
 
 .btn-primary:hover {
@@ -123,13 +129,17 @@ a {
 .features {
   display: flex;
   justify-content: space-around;
-  padding: 60px 20px;
+  padding: 60px 300px;
   background-color: #fff;
 }
 
 .feature {
   text-align: center;
   padding: 20px;
+  width: 30%;
+  /* border: 1px solid #ccc; */
+  border-radius: 5px;
+  text-align: left;
 }
 
 .feature i {
