@@ -3,46 +3,83 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RE-post</title>
+    <title>RE-post - Simplify Your Social Media Management</title>
+    <link rel="stylesheet" href="/CSS/style.css" type="text/css" />
   </head>
   <body>
-    <header>
+    <!-- Header Section -->
+    <header class="header">
+      <div class="logo">RE-post</div>
       <nav>
-        <ul>
+        <ul class="nav-links">
           <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Create post</a></li>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Contact</a></li>
         </ul>
       </nav>
     </header>
 
-    <main>
-      <section class="hero-sctn">
-        <h1>This is RE-post</h1>
-        <p>Post Once, Share Everywhere</p>
-      </section>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Simplify Your Social Media Management</h1>
+        <p>
+          Automate your posts across LinkedIn, Facebook, and Instagram with just
+          one click.
+        </p>
+        <a href="#" class="btn-primary">Get Started</a>
+        <a href="#" class="btn-secondary">Learn More</a>
+      </div>
+    </section>
 
-      <section class="posts">
-        <form action="/post" method="POST" enctype="multipart/form-data">
-          <label for="message">Write Post</label>
-          <textarea
-            name="message"
-            id="message"
-            rows="10"
-            cols="50"
-            placeholder="What do you want to talk about?"
-          ></textarea>
-          <br />
-          <br />
+    <!-- Features Section -->
+    <section class="features">
+      <div class="feature">
+        <i class="icon connectivity-icon"></i>
+        <h3>Multi-Platform Posting</h3>
+        <p>Post to LinkedIn, Facebook, and Instagram simultaneously.</p>
+      </div>
+      <div class="feature">
+        <i class="icon calendar-icon"></i>
+        <h3>Schedule Posts</h3>
+        <p>Plan your posts ahead of time and schedule them for later.</p>
+      </div>
+      <div class="feature">
+        <i class="icon graph-icon"></i>
+        <h3>Analytics & Insights</h3>
+        <p>Track your performance across all platforms.</p>
+      </div>
+    </section>
+    <!-- Text Box Area -->
+    <section class="posts">
+      <form action="/post" method="POST" enctype="multipart/form-data">
+        <label for="message">Write Post</label>
+        <textarea
+          name="message"
+          id="message"
+          rows="10"
+          cols="50"
+          placeholder="What do you want to talk about?"
+        ></textarea>
+        <br />
+        <br />
 
-          <label for="media">Add Media</label>
-          <input type="file" id="media" name="media" multiple>
-          <br />
-          <br />
+        <label for="media">Add Media</label>
+        <input type="file" id="media" name="media" multiple />
+        <br />
+        <br />
 
-          <button type="submit">Post Content</button>
-        </form>
-      </section>
-    </main>
+        <button type="submit">Post Content</button>
+      </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; 2024 RE-post. All rights reserved.</p>
+      </div>
+    </footer>
   </body>
 </html>
