@@ -48,6 +48,8 @@ app.post('/post', upload.array('media', 5), async (req, res) => {
   const mediaFiles = req.files;
   const linkedinAccessToken = process.env.ACCESS_TOKEN;
   const facebookAccessToken = process.env.FACEBOOK_ACCESS_TOKEN;
+  const instagramAccessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
+  const instagramAccountId = process.env.INSTAGRAM_ACCOUNT_ID;
 
   if (!message) {
     return res.status(400).send('Message is required.');
@@ -119,7 +121,20 @@ app.post('/post', upload.array('media', 5), async (req, res) => {
       console.log('Facebook access token is missing.');
     }
 
-    res.send('Post to LinkedIn and Facebook was successful!');
+    if (instagramAccessToken && instagramAccountId) {
+      for (let media of mediaUrls) {
+        await postToInstagram(
+          instagramAccessToken,
+          instagramAccountId,
+          message,
+          media.url
+        );
+      }
+    } else {
+      console.log('Instagram access token or account ID is missing.');
+    }
+
+    res.send('Post to LinkedIn and Facebook & Instagram was successful!');
   } catch (error) {
     res.status(500).send(`Posting failed: ${error.message}`);
   }
@@ -350,6 +365,35 @@ async function postToFacebook(accessToken, message, mediaUrl, mediaType) {
   }
 }
 
+async function postToInstagram(accessToken, accountId, message, mediaUrl) {
+  try {
+    // create a media container
+    const mediaResponse = await axios.post(
+      `https://graph.facebook.com/v16.0/${accountId}/media`,
+      {
+        image_url: mediaUrl,
+        caption: message,
+        access_token: accessToken,
+      }
+    );
+
+    const creationId = mediaResponse.data.id;
+
+    //publlish the medai contatner
+    const publishResponse = await axios.post(
+      `https://graph.facebook.com/v16.0/${accountId}/media_publish`,
+      {
+        creation_id: creationId,
+        access_token: accessToken,
+      }
+    );
+    console.log(`Instagram Post was successful: ${publishResponse.status}`);
+  } catch (error) {
+    console.error('Error posting to Instagram:', error.message);
+    res.status(500).send('Error posting to Instagram');
+    throw error;
+  }
+}
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
