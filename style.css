@@ -131,18 +131,21 @@ a {
 .features {
   display: flex;
   justify-content: space-around;
-  padding: 300px 20px;
+  padding: 30px 20px;
   background-color: #fff;
+  min-height: 795px;
 }
 
 .feature {
   text-align: center;
   padding: 20px;
   width: 30%;
+  height: 195px;
   /* border: 1px solid #ccc; */
   border-radius: 5px;
   text-align: left;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.11);
+  margin: auto 0;
 }
 
 .feature i {
@@ -243,7 +246,7 @@ a {
   background-color: #fff;
   padding: 60px 20px;
   text-align: center;
-  height: 795px;
+  min-height: 795px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -296,6 +299,7 @@ form {
   font-size: 1rem;
   width: 50px;
   transition: all 0.3s ease;
+  border-radius: 3px;
 }
 
 .formatting-options button:hover {
@@ -322,6 +326,54 @@ form {
   margin-top: 10px;
   font-size: 0.875rem;
   color: #666;
+}
+
+.media-preview-container {
+  display: flex;
+  /* flex-wrap: wrap; */
+  gap: 10px;
+}
+
+.media-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 300px; /* You can adjust this value */
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #f3f3f3;
+}
+
+.media-preview {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensures the media maintains its aspect ratio */
+  border-radius: 10px;
+}
+
+.media-wrapper video {
+  height: auto;
+}
+
+.remove-media {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: rgba(90, 69, 69, 0.438);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.remove-media:hover {
+  background-color: rgba(255, 0, 0, 1);
 }
 
 .media-upload {
@@ -358,25 +410,51 @@ form {
 }
 
 .support-container {
-  max-width: 800px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 80%;
   margin: 0 auto;
   text-align: center;
+  gap: 100px;
+}
+
+.support-text {
+  text-align: justify;
+  width: 30%;
+}
+
+.contact-link {
+  background-color: #00cc88;
+  color: #fff;
+  padding: 10px 35px;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+.contact-link:hover {
+  background-color: #009966;
 }
 
 .support-section h2 {
-  font-size: 2em;
+  font-size: 3em;
   font-weight: 500;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: #333;
 }
 
 .support-section p {
+  font-size: 1rem;
   font-weight: 100;
   color: #666;
   margin-bottom: 30px;
 }
 
 .support-form .form-group {
+  /* max-width: 40%; */
   margin-bottom: 20px;
   text-align: left;
 }
@@ -395,6 +473,7 @@ form {
   font-size: 1em;
   border: 1px solid #ccc;
   border-radius: 5px;
+  resize: none;
 }
 
 .support-form .submit-button {

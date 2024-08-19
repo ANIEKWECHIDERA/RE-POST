@@ -19,6 +19,7 @@
           <li><a href="#home">Home</a></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#howitworks">How It Works</a></li>
+          <li><a href="#create-post">Create Post</a></li>
           <li><a href="#support">Support</a></li>
           <!-- <li><a href="#contact">Contact</a></li> -->
         </ul>
@@ -68,7 +69,7 @@
     </section>
 
     <!-- How it works -->
-    <section id="#howitworks" class="how-it-works">
+    <section id="howitworks" class="how-it-works">
       <div class="how-it-works-container">
         <div class="step">
           <div class="icon">
@@ -150,6 +151,13 @@
 
           <br /><br />
 
+          <div
+            id="media-preview-container"
+            class="media-preview-container"
+          ></div>
+
+          <br /><br />
+
           <div class="media-upload">
             <label for="media" class="file-upload-label">
               <i class="bi bi-plus plus-icon"></i> Add Media
@@ -175,12 +183,17 @@
     <!-- Support Section -->
     <section id="support" class="support-section">
       <div class="support-container">
-        <h2>Support</h2>
-        <p>
-          If you have any questions or need assistance, we're here to help.
-          Reach out to us via the form below or contact our support team
-          directly.
-        </p>
+        <div class="support-text">
+          <h2>Support</h2>
+          <p>
+            If you have any questions or need assistance, we're here to help.
+            Reach out to us via the form below or contact our support team
+            directly.
+          </p>
+          <a href="mailto:info@re-post.com" class="contact-link">
+            Contact Support
+          </a>
+        </div>
 
         <form class="support-form">
           <div class="form-group">
@@ -235,18 +248,55 @@
         submitBtn.disabled = messageBox.value.trim() === '';
       }
 
-      // Function to format selected text
-      function formatText(command) {
-        document.execCommand(command, false, null);
-      }
-
-      // Function to insert a smiley face
-      function insertSmiley() {
-        document.execCommand('insertText', false, '😊');
-      }
-
       // Initialize the check to see if there's text on page load
       document.addEventListener('DOMContentLoaded', checkContent);
+
+      ////Media Preview with Removal Option/////
+      document
+        .getElementById('media')
+        .addEventListener('change', function (event) {
+          const mediaPreviewContainer = document.getElementById(
+            'media-preview-container'
+          );
+          mediaPreviewContainer.innerHTML = ''; // Clear any previous previews
+
+          const files = event.target.files;
+
+          Array.from(files).forEach(file => {
+            const fileReader = new FileReader();
+
+            fileReader.onload = function (e) {
+              let mediaElement;
+
+              if (file.type.startsWith('image')) {
+                mediaElement = document.createElement('img');
+              } else if (file.type.startsWith('video')) {
+                mediaElement = document.createElement('video');
+                mediaElement.controls = true; // Adds video controls (play, pause, etc.)
+              }
+
+              mediaElement.src = e.target.result;
+              mediaElement.className = 'media-preview';
+
+              const removeButton = document.createElement('button');
+              removeButton.textContent = 'X';
+              removeButton.className = 'remove-media';
+              removeButton.addEventListener('click', function () {
+                mediaElement.remove();
+                removeButton.remove();
+              });
+
+              const mediaWrapper = document.createElement('div');
+              mediaWrapper.className = 'media-wrapper';
+              mediaWrapper.appendChild(mediaElement);
+              mediaWrapper.appendChild(removeButton);
+
+              mediaPreviewContainer.appendChild(mediaWrapper);
+            };
+
+            fileReader.readAsDataURL(file);
+          });
+        });
     </script>
   </body>
 </html>
